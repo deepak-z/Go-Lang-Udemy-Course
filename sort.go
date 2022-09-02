@@ -22,6 +22,16 @@ type ByName []person
 func (a ByName) Len() int  { return len(a) }
 func (a ByName) Swap(i, j int) {a[i], a[j] = a[j], a[i]}
 func (a ByName) Less(i,j int) bool{ return a[i].first < a[j].first}
+
+	TakerFeeVolume      float64        `json:"taker_fee_volume"`
+	ExecutionPrice      float64        `json:"execution_price"`
+	MakerFeePercentage  float32        `json:"maker_fee_percentage"`
+	TakerFeePercentage  float32        `json:"taker_fee_percentage"`
+	QodenExecutionInfo  datatypes.JSON `json:"qoden_execution_info"`
+	//TODO Run a migration to remove them
+	// CryptoTransactionID *int64         `json:"crypto_transaction_id"`
+	// FiatTransactionID   *int64         `json:"fiat_transaction_id"`
+	RequestId           uuid.UUID      `gorm:"type:uuid;default:uuid_generate_v4()" json:"request_id"`
 			 
 func main() {
 		
